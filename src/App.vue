@@ -1,7 +1,7 @@
 <template>
   <div class="container ">
-    <div class="row mx-auto  bg-primary"
-         style="height: 800px; overflow: hidden;   ;border-radius: 4rem; margin-top: 10px; margin-bottom: 10px; max-width: 420px">
+    <div class="row mx-auto mt-lg-5 bg-primary"
+         style="height: 800px; overflow: hidden ;border-radius: 4rem; margin-top: 10px; margin-bottom: 10px; max-width: 420px">
       <router-view/>
 
     </div>

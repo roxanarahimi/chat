@@ -42,13 +42,6 @@
             <!--            <p class="mb-2">پیام...</p>-->
           </div>
         </div>
-        <div class="p-2">
-          <i style="font-size: 35px" class=" bi bi-person-circle"></i>
-          <div class="">
-            <small class=" mb-0 ">نامکاربری</small>
-            <!--            <p class="mb-2">پیام...</p>-->
-          </div>
-        </div>
 
 
       </div>
@@ -62,7 +55,7 @@
 <script>
 // @ is an alias to /src
 
-import { collection, addDoc, getDocs,orderBy, query, onSnapshot, doc } from "firebase/firestore";
+import { collection, addDoc, where,orderBy, query, onSnapshot, doc } from "firebase/firestore";
 
 export default {
   name: 'Chat',
@@ -116,8 +109,18 @@ setTimeout(()=>{
      const unsubscribe = onSnapshot(q, (querySnapshot) => {
        this.allMsgs  = [];
        querySnapshot.forEach((doc) => {
-         this.allMsgs.push(doc.data());
+         if (doc.data().sender === this.me){
+           if (doc.data().receiver === this.them){
+             this.allMsgs.push(doc.data());
+
+           }
+         }else if(doc.data().sender === this.them){
+           if (doc.data().receiver === this.me){
+             this.allMsgs.push(doc.data());
+           }
+           }
        });
+
      });
 
      this.scrollBottom();
